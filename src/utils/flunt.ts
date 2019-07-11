@@ -32,6 +32,12 @@ export class Flunt {
     }
   };
 
+  isGreaterThan = (valueA, valueB, message) => {
+    if (valueA > valueB) {
+      this.errors.push(message);
+    }
+  };
+
   clear() {
     this.errors = [];
   }
