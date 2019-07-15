@@ -41,7 +41,7 @@ export class CustomerController {
   async post(@Body() model: CreateCustomerDto) {
     try {
       const user = await this.accountService.create(
-        new User(model.document, model.password, true),
+        new User(model.document, model.password, true, ['user']),
       );
 
       const customer = new Customer(
