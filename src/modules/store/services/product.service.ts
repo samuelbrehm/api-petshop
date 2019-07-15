@@ -15,7 +15,7 @@ export class ProductService {
   }
 
   async getById(id: number): Promise<Product> {
-    return await this.repository.findOne({ id: id });
+    return await this.repository.findOne({ id });
   }
 
   async post(product: Product) {
