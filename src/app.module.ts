@@ -3,6 +3,7 @@ import { BackofficeModule } from './modules/backoffice/backoffice.module';
 import { MongooseModule } from '@nestjs/mongoose';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { StoreModule } from './modules/store/store.module';
+import { AgendaModule } from './modules/agenda/agenda.module';
 
 @Module({
   imports: [
@@ -20,6 +21,7 @@ import { StoreModule } from './modules/store/store.module';
     }),
     BackofficeModule,
     StoreModule,
+    AgendaModule,
   ],
   controllers: [],
   providers: [],
