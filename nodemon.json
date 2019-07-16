@@ -1,5 +1,11 @@
 {
-  "watch": ["dist"],
-  "ext": "js",
-  "exec": "node dist/main"
+  "watch": ["src"],
+  "ext": "ts",
+  "ignore": ["src/**/*.spec.ts"],
+  "exec": "ts-node -r tsconfig-paths/register src/main.ts",
+  "env": {
+    "NODE_ENV": "development",
+    "CONNECTION_STRING": "mongodb+srv://samuelbrehm:s11b2p86@cluster0-xyrkx.mongodb.net/test?retryWrites=true&w=majority",
+    "SALT_KEY": "123"
+  }
 }

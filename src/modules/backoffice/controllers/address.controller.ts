@@ -5,7 +5,7 @@ import {
   Body,
   UseInterceptors,
   HttpException,
-  HttpStatus,
+  HttpStatus, Get,
 } from '@nestjs/common';
 
 import { Result } from '../models/result.model';
@@ -18,6 +18,7 @@ import { CreateAddressContract } from '../contracts/address/create-address.contr
 import { AddressService } from '../services/address.service';
 
 import { AddressType } from '../enums/address.type.enum';
+import { ResultDto } from '../dtos/result.dto';
 
 @Controller('v1/addresses')
 export class AddressController {
@@ -61,6 +62,21 @@ export class AddressController {
         ),
         HttpStatus.BAD_REQUEST,
       );
+    }
+  }
+
+  @Get('search/:zipcode')
+  async search(@Param('zipcode') zipcode) {
+    try {
+      const response = await this.service.getAddressByZipCode(zipcode).toPromise();
+      return new ResultDto(null, true, response.data, null);
+    } catch (error) {
+      throw new HttpException(new ResultDto(
+        'Não foi possível localizar seu endereço',
+        false,
+        null,
+        error),
+        HttpStatus.BAD_REQUEST);
     }
   }
 }
