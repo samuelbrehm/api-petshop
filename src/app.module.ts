@@ -6,8 +6,7 @@ import { StoreModule } from './modules/store/store.module';
 
 @Module({
   imports: [
-    MongooseModule.forRoot(
-      'mongodb+srv://samuelbrehm:s11b2p86@cluster0-xyrkx.mongodb.net/test?retryWrites=true&w=majority',
+    MongooseModule.forRoot(process.env.CONNECTION_STRING,
     ),
     TypeOrmModule.forRoot({
       type: 'mysql',
